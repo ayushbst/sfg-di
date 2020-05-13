@@ -1,16 +1,13 @@
 package DependencyInjection.di;
 
-import DependencyInjection.di.Controllers.ConstructorInjectedController;
-import DependencyInjection.di.Controllers.MyController;
-import DependencyInjection.di.Controllers.PropertyInjectedController;
-import DependencyInjection.di.Controllers.SetterInjectedController;
+import DependencyInjection.di.Controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"DependencyInjection/di/Controllers"})
+@ComponentScan(basePackages = {"DependencyInjection/di/Controllers","DependencyInjection/di/services"})
 public class DiApplication {
 
 	public static void main(String[] args) {
@@ -23,6 +20,7 @@ public class DiApplication {
 		PropertyInjectedController propertyInjectedController = (PropertyInjectedController) ctx.getBean("propertyInjectedController") ;
 		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx.getBean("constructorInjectedController");
 		SetterInjectedController setterInjectedController = (SetterInjectedController) ctx.getBean("setterInjectedController");
+		PrimaryController primaryController = (PrimaryController) ctx.getBean("primaryController");
 
 		System.out.println("----------Property injection ------------");
 		System.out.println(propertyInjectedController.getGreeting());
@@ -30,6 +28,8 @@ public class DiApplication {
 		System.out.println(constructorInjectedController.getGreeting());
 		System.out.println("----------Setter injection ------------");
 		System.out.println(setterInjectedController.getGreeting());
+		System.out.println("----------Primary injection ------------");
+		System.out.println(primaryController.getGreeting());
 	}
 
 }
