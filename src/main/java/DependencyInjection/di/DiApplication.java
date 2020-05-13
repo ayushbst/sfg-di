@@ -21,6 +21,7 @@ public class DiApplication {
 		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx.getBean("constructorInjectedController");
 		SetterInjectedController setterInjectedController = (SetterInjectedController) ctx.getBean("setterInjectedController");
 		PrimaryController primaryController = (PrimaryController) ctx.getBean("primaryController");
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
 
 		System.out.println("----------Property injection ------------");
 		System.out.println(propertyInjectedController.getGreeting());
@@ -30,6 +31,10 @@ public class DiApplication {
 		System.out.println(setterInjectedController.getGreeting());
 		System.out.println("----------Primary injection ------------");
 		System.out.println(primaryController.getGreeting());
+
+		//Change Profile in resource->Application.properties to ES or EN
+		System.out.println("----------i18n Controller ------------");
+		System.out.println(i18nController.sayHello());
 	}
 
 }
